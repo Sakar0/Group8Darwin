@@ -26,3 +26,20 @@ As the UI/UX Designer, Aryan will ensure our documentation meets industry standa
 
 Regarding Academic Integrity, we agree that all youth justice research must be cited using the university-approved style. Use of Generative AI is permitted for drafting and brainstorming, but all AI-generated code or text must be reviewed for "hallucinations" (fake crime stats). Every team member must be able to explain the work they submit. We will use GitHub's commit history to verify that each member has authored their own contributions.
 We expect a "Response SLA" (Service Level Agreement) of 24 hours during weekdays. To accommodate our diverse schedules and time zones, we will hold a weekly "Stand-up" meeting every Tuesday and Wednesday aound 10 am to 4 pm  via Teams video call. If a member cannot attend, they must post a status update in the Teams channel prior to the meeting. We will use a shared GitHub Project Board to track our progress visually.
+Section 2: Milestones and Integration.
+
+Markdown
+
+## Section 4: Provisional Milestones and Checkpoints
+
+As the Technical Lead, Rohan will manage the Markdown authoring and document structure. Below is our roadmap for the semester:
+
+| Milestone | Target Date | Responsibility |
+
+| Contract Finalized & Git Workflow Verified | [Date] | All Members |
+| Youth Justice Policy & Data Research Complete | [Date] | Samir & Sakar |
+| Assessment 2: Internal Draft Review | [Date] | Aryan (Design) |
+| Integration of Report 1 into GitHub Root | [Date] | Rohan (Technical) |
+| Assessment 4: Final Project Checkpoint | [Date] | All Members |
+
+We will use "Integration Points" every two weeks where individual research is merge
