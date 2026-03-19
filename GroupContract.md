@@ -16,11 +16,16 @@ If a member of the group does not do their work or disappears without telling us
 ### Task Ownership
 We will use GitHub to track every part of our Youth Justice project. Each task, like researching crime rates or writing about government policies, will be assigned to one person. As the Coordinator, I will make sure that everyone knows exactly what they are supposed to do. We will use a "buddy system" where another team member checks your work before it is finalized. This way, we catch mistakes early and make sure the whole report sounds like it was written by one professional team rather than four separate people. We will use GitHub Issues to label and track these tasks until they are finished.
 
----
 
-# Section 2 : Communication and Collaboration Protocols
-### Communication and Working Styles
-As the Research Lead, Myself Samir I will oversee the collection of evidence regarding youth recidivism and justice systems. Our primary communication hub will be Microsoft Teams; we will not use external apps like WhatsApp for project decisions to ensure a verifiable audit trail for the teaching team.
+## # Section 2: Communication and Working Styles 
+
+### Communication and Response Times
+As the Research Lead, I will manage how we gather information and how we talk to each other. To follow the university instructions, we will only use Microsoft Teams for our official project talk. We will not use WhatsApp, Discord, or any other social media for making group decisions. This is important because the teachers need to see our chat history as proof of how we worked together. This creates a professional audit trail that protects the group if there are any misunderstandings later in the semester.
+
+We expect everyone to reply to messages within one day (24 hours) during the week. We know everyone is busy with other classes and personal lives, so we don't expect instant replies at night or on weekends. We will have regular check-in meetings on Teams to talk about our progress. If you cannot make it to a meeting, you must leave a message in the Teams channel before the meeting starts so the rest of us know you are okay and what you have finished so far. This keeps the project moving without delays.
+
+### Working Styles and Schedules
+Our team has different ways of working and different schedules. Some of us might like to work early in the morning, while others work better at night. To make this work, we will use "asynchronous" communication. This means we leave messages and updates on GitHub and Teams that others can read when they are online. This gives everyone the freedom to work at their own pace while still meeting the project goals. We will use a shared board to see which tasks are "To Do," "In Progress," or "Done," which keeps us all on the same page without needing to talk every hour.
 
 # Section 3: Conflict Resolution and Academic Integrity (Authored by Aryan)
 
