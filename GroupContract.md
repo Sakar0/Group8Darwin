@@ -22,7 +22,7 @@ We will use GitHub to track every part of our Youth Justice project. Each task, 
 ### Communication and Working Styles
 As the Research Lead, Myself Samir I will oversee the collection of evidence regarding youth recidivism and justice systems. Our primary communication hub will be Microsoft Teams; we will not use external apps like WhatsApp for project decisions to ensure a verifiable audit trail for the teaching team.
 
-## # Section 3: Conflict Resolution and Academic Integrity (Authored by Aryan)
+# Section 3: Conflict Resolution and Academic Integrity (Authored by Aryan)
 
 ### How We Handle Disagreements
 As the UI/UX Designer, I want to make sure we have a friendly and professional team environment. Sometimes people have different ideas, and that can lead to disagreements. If we have a conflict, we will follow three simple steps to fix it. First, we will talk about it calmly on Microsoft Teams. Second, if we still can't agree, the whole group will take a vote, and the majority will win. Third, if the problem is really big and we cannot fix it ourselves, we will ask our tutor or teacher to help us. We promise to handle all problems with respect and stay focused on finishing our assignment as a professional group.
