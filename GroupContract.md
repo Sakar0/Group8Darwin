@@ -5,7 +5,7 @@
 **Sakar:** Project Coordinator
 **Samir:** Research and Backend Lead
 **Aryan:** UI/UX Designer
-**Rohan:** Front end lead
+**Rohan:** Technical Lead and Front End Lead
 
 # Section 1: Terms and Conditions
 ### Group Allocation and Grade Distribution
