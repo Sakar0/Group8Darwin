@@ -1,4 +1,4 @@
-# Initial Draft of group contract
+# Group Contract
 # Group8
 **Project theme: Theme 1. Youth Justice & Crime**
 # Team Roles
