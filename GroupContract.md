@@ -8,10 +8,15 @@
 **Rohan:** Front end lead
 
 # Section 1: Terms and Conditions
-### Task Ownership and Grade Allocation
-As the Project Coordinator, Sakar is responsible for maintaining the GitHub repository and ensuring the "Living Document" workflow is followed. We will use GitHub Issues to break down the Youth Justice project into specific tasks (e.g., Statistics, Policy Analysis, Case Studies). 
+### Group Allocation and Grade Distribution
+As the Project Coordinator, my(SAKAR) main job is to keep the group organized and make sure we follow the rules for our assignment. When it comes to grades, our group has decided that everyone should get the same mark. However, this only happens if everyone does their fair share of the work. We define "fair work" as finishing your assigned tasks before the internal deadlines we set as a team. It also means showing up to our group meetings on Microsoft Teams and helping others when they need it.
 
-Regarding Grade Allocation, we have agreed that all members will receive the same mark by default. However, if a member fails to contribute their agreed-upon Markdown sections or misses more than two consecutive meetings without notice, the team will document this in the commit history and consult the tutor regarding a grade differentiation. Fair contribution is defined as completing assigned tasks on time and participating in the peer-review process for Assessment 2 and 4.
+If a member of the group does not do their work or disappears without telling us, we will keep a record of it. We will use the GitHub commit history to show who is working and who is not. If someone consistently fails to help, we will talk to our tutor about giving that person a different grade. We want everyone to succeed, but we also believe that everyone must earn their marks through honest effort and teamwork. This ensures that the final grade reflects the actual work put in by each individual student.
+
+### Task Ownership
+We will use GitHub to track every part of our Youth Justice project. Each task, like researching crime rates or writing about government policies, will be assigned to one person. As the Coordinator, I will make sure that everyone knows exactly what they are supposed to do. We will use a "buddy system" where another team member checks your work before it is finalized. This way, we catch mistakes early and make sure the whole report sounds like it was written by one professional team rather than four separate people. We will use GitHub Issues to label and track these tasks until they are finished.
+
+---
 
 # Section 2 : Communication and Collaboration Protocols
 ### Communication and Working Styles
