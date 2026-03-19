@@ -37,14 +37,10 @@ Markdown
 
 ## Section 4: Provisional Milestones and Checkpoints
 
-As the Technical Lead, Rohan will manage the Markdown authoring and document structure. Below is our roadmap for the semester:
+## Project Milestones
+As the Technical Lead, I am in charge of the structure of our Markdown documents and the overall project plan. Our team has a clear plan to finish the Youth Justice and Crime project on time. Our first step is finishing this contract and making sure we all know how to push code to GitHub. After that, we will start the research phase where we look for data and laws about youth crime. We have broken the semester into small steps so that we don't have to rush at the end. We will focus on completing the research for Assessment 2 first, then move into the deeper analysis needed for Assessment 4.
 
-| Milestone | Target Date | Responsibility |
+For the first big report (Assessment 2), we will have an internal deadline to finish our drafts. This gives us time to read each other's work and fix any errors. Sakar will write the introduction, Samir will handle the main research, Aryan will make sure the layout looks professional, and I will make sure the Markdown code is perfect. We will do the same thing for the second report (Assessment 4), making sure we have plenty of time for a final review before the official due date on Learnline.
 
-| Contract Finalized & Git Workflow Verified | [Date] | All Members |
-| Youth Justice Policy & Data Research Complete | [Date] | Samir & Sakar |
-| Assessment 2: Internal Draft Review | [Date] | Aryan (Design) |
-| Integration of Report 1 into GitHub Root | [Date] | Rohan (Technical) |
-| Assessment 4: Final Project Checkpoint | [Date] | All Members |
-
-We will use "Integration Points" every two weeks where individual research is merge
+### Integration and Review
+Every two weeks, we will have an "Integration Point." This is when we take all the separate things we have been working on and put them together into one main file on GitHub. This helps us see if the project is coming together correctly. It also lets us test the links and formatting to make sure everything works. By checking our progress often, we show that we are acting like professional developers. If we find that we are falling behind, we will adjust our plan and help each other out to make sure we finish a high-quality assignment that meets all CDU standards.
