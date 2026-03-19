@@ -9,7 +9,7 @@
 
 # Section 1: Terms and Conditions
 ### Group Allocation and Grade Distribution
-As the Project Coordinator, my(SAKAR) main job is to keep the group organized and make sure we follow the rules for our assignment. When it comes to grades, our group has decided that everyone should get the same mark. However, this only happens if everyone does their fair share of the work. We define "fair work" as finishing your assigned tasks before the internal deadlines we set as a team. It also means showing up to our group meetings on Microsoft Teams and helping others when they need it.
+As the Project Coordinator (SAKAR), my main job is to keep the group organized and make sure we follow the rules for our assignment. When it comes to grades, our group has decided that everyone should get the same mark. However, this only happens if everyone does their fair share of the work. We define "fair work" as finishing your assigned tasks before the internal deadlines we set as a team. It also means showing up to our group meetings on Microsoft Teams and helping others when they need it.
 
 If a member of the group does not do their work or disappears without telling us, we will keep a record of it. We will use the GitHub commit history to show who is working and who is not. If someone consistently fails to help, we will talk to our tutor about giving that person a different grade. We want everyone to succeed, but we also believe that everyone must earn their marks through honest effort and teamwork. This ensures that the final grade reflects the actual work put in by each individual student.
 
