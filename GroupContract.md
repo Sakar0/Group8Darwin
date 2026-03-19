@@ -30,7 +30,7 @@ As the UI/UX Designer, I want to make sure we have a friendly and professional t
 ### Academic Integrity and Using AI
 We are studying a serious topic like Youth Justice, so our facts must be correct. We will use the university's official style for all our references and citations. We agree that we will not copy work from the internet or from other students. Regarding Artificial Intelligence (AI) like ChatGPT, we have decided that it is okay to use it for brainstorming ideas or helping us understand hard topics. However, we will not let AI write our final report for us. We must check every fact the AI gives us to make sure it is not "hallucinating" or making up fake crime statistics. Every team member must be able to explain everything they submit in their own words during our meetings.
 
-## Section 4: Provisional Milestones and Checkpoints
+# Section 4: Provisional Milestones and Checkpoints
 
 ## Project Milestones
 As the Technical Lead(ROHAN), I am in charge of the structure of our Markdown documents and the overall project plan. Our team has a clear plan to finish the Youth Justice and Crime project on time. Our first step is finishing this contract and making sure we all know how to push code to GitHub. After that, we will start the research phase where we look for data and laws about youth crime. We have broken the semester into small steps so that we don't have to rush at the end. We will focus on completing the research for Assessment 2 first, then move into the deeper analysis needed for Assessment 4.
