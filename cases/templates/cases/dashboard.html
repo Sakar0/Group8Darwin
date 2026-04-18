@@ -1,0 +1,70 @@
+{% extends "cases/base.html" %}
+{% block title %}Dashboard – Youth Justice CMS{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><h1>Dashboard</h1><div class="subtitle">Youth Justice Case Management System</div></div>
+  <div style="display:flex;gap:.5rem;">
+    <a href="{% url 'case-create' %}" class="btn btn-success">+ New Case</a>
+    <a href="{% url 'youngperson-create' %}" class="btn btn-primary">+ New Client</a>
+  </div>
+</div>
+<div class="stats-grid">
+  <div class="stat-card blue"><div class="stat-number">{{ total_cases }}</div><div class="stat-label">Total Cases</div></div>
+  <div class="stat-card green"><div class="stat-number">{{ open_cases }}</div><div class="stat-label">Open Cases</div></div>
+  <div class="stat-card orange"><div class="stat-number">{{ pending_cases }}</div><div class="stat-label">Pending Court</div></div>
+  <div class="stat-card purple"><div class="stat-number">{{ total_clients }}</div><div class="stat-label">Registered Clients</div></div>
+  <div class="stat-card red"><div class="stat-number">{{ total_programs }}</div><div class="stat-label">Active Programs</div></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+  <div class="card">
+    <div class="card-header"><h2>Upcoming Hearings</h2><a href="{% url 'case-list' %}?status=pending" class="btn btn-light btn-sm">View all</a></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Client</th><th>Case</th><th>Court</th><th>Date</th></tr></thead>
+      <tbody>
+      {% for h in upcoming_hearings %}
+      <tr>
+        <td>{{ h.case.young_person }}</td>
+        <td><a href="{% url 'case-detail' h.case.pk %}">{{ h.case.case_number }}</a></td>
+        <td>{{ h.court_name }}</td>
+        <td>{{ h.hearing_date|date:"d M Y" }}</td>
+      </tr>
+      {% empty %}<tr><td colspan="4"><div class="empty-state"><strong>No upcoming hearings</strong></div></td></tr>{% endfor %}
+      </tbody>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><h2>High Risk Cases</h2><a href="{% url 'case-list' %}?risk=high" class="btn btn-light btn-sm">View all</a></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Case #</th><th>Client</th><th>Caseworker</th></tr></thead>
+      <tbody>
+      {% for case in high_risk_cases %}
+      <tr>
+        <td><a href="{% url 'case-detail' case.pk %}">{{ case.case_number }}</a></td>
+        <td>{{ case.young_person }}</td>
+        <td>{{ case.caseworker|default:"—" }}</td>
+      </tr>
+      {% empty %}<tr><td colspan="3"><div class="empty-state"><strong>No high risk cases</strong></div></td></tr>{% endfor %}
+      </tbody>
+    </table></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header"><h2>Recent Cases</h2><a href="{% url 'case-list' %}" class="btn btn-light btn-sm">View all</a></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Case #</th><th>Client</th><th>Caseworker</th><th>Status</th><th>Risk</th><th>Opened</th><th></th></tr></thead>
+    <tbody>
+    {% for case in recent_cases %}
+    <tr>
+      <td><strong>{{ case.case_number }}</strong></td>
+      <td>{{ case.young_person }}</td>
+      <td>{{ case.caseworker|default:"—" }}</td>
+      <td><span class="badge badge-{{ case.status }}">{{ case.get_status_display }}</span></td>
+      <td><span class="badge badge-{{ case.risk_level }}">{{ case.get_risk_level_display }}</span></td>
+      <td>{{ case.opened_date|date:"d M Y" }}</td>
+      <td><a href="{% url 'case-detail' case.pk %}" class="btn btn-primary btn-sm">View</a></td>
+    </tr>
+    {% empty %}<tr><td colspan="7"><div class="empty-state"><strong>No cases yet.</strong><p>Create the first case to get started.</p></div></td></tr>{% endfor %}
+    </tbody>
+  </table></div>
+</div>
+{% endblock %}

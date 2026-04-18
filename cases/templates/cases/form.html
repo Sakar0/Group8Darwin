@@ -1,0 +1,26 @@
+{% extends "cases/base.html" %}
+{% block title %}{{ title }} – Youth Justice CMS{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><h1>{{ title }}</h1>{% if subtitle %}<div class="subtitle">{{ subtitle }}</div>{% endif %}</div>
+</div>
+<div class="card" style="max-width:720px;">
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} <span style="color:#e53e3e;">*</span>{% endif %}</label>
+        {{ field }}
+        {% if field.help_text %}<small style="color:#718096;font-size:.78rem;display:block;margin-top:.2rem;">{{ field.help_text }}</small>{% endif %}
+        {% if field.errors %}<small style="color:#e53e3e;font-size:.78rem;display:block;margin-top:.2rem;">{{ field.errors|join:", " }}</small>{% endif %}
+      </div>
+      {% endfor %}
+      <div style="display:flex;gap:.75rem;margin-top:1.5rem;padding-top:1rem;border-top:1px solid #e2e8f0;">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="javascript:history.back()" class="btn btn-light">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
