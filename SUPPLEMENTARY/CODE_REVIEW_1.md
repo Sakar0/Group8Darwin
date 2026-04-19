@@ -1,8 +1,8 @@
 # Code Review 1 — models.py
 
-**Reviewer:** [Member 3 Name]  
+**Reviewer:** Sakar0  
 **Author:** [Member 1 Name]  
-**Date:** [Date]  
+**Date:** 19 April 2026  
 **File Reviewed:** `cases/models.py`  
 **Pull Request:** `feature/domain-models` → `main`
 
