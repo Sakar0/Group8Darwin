@@ -1,0 +1,55 @@
+{% extends "cases/base.html" %}
+{% block title %}Cases – Youth Justice CMS{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><h1>Cases</h1><div class="subtitle">All case records</div></div>
+  <a href="{% url 'case-create' %}" class="btn btn-success">+ New Case</a>
+</div>
+<div class="card">
+  <div class="filter-bar">
+    <form method="get" style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;">
+      <input type="text" name="q" placeholder="Search case # or client name..." value="{{ search_query }}" style="min-width:220px;">
+      <select name="status" onchange="this.form.submit()" style="padding:.4rem .65rem;border:1px solid #cbd5e0;border-radius:6px;font-size:.825rem;">
+        <option value="">All Statuses</option>
+        {% for val,label in status_choices %}
+        <option value="{{ val }}" {% if status_filter == val %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+      <select name="risk" onchange="this.form.submit()" style="padding:.4rem .65rem;border:1px solid #cbd5e0;border-radius:6px;font-size:.825rem;">
+        <option value="">All Risk Levels</option>
+        <option value="low" {% if risk_filter == 'low' %}selected{% endif %}>Low</option>
+        <option value="medium" {% if risk_filter == 'medium' %}selected{% endif %}>Medium</option>
+        <option value="high" {% if risk_filter == 'high' %}selected{% endif %}>High</option>
+      </select>
+      <button type="submit" class="btn btn-primary btn-sm">Search</button>
+      <a href="{% url 'case-list' %}" class="btn btn-light btn-sm">Clear</a>
+    </form>
+  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Case #</th><th>Client</th><th>Caseworker</th><th>Status</th><th>Risk</th><th>Opened</th><th>Actions</th></tr></thead>
+    <tbody>
+    {% for case in cases %}
+    <tr>
+      <td><strong>{{ case.case_number }}</strong></td>
+      <td>{{ case.young_person }}</td>
+      <td>{{ case.caseworker|default:"—" }}</td>
+      <td><span class="badge badge-{{ case.status }}">{{ case.get_status_display }}</span></td>
+      <td><span class="badge badge-{{ case.risk_level }}">{{ case.get_risk_level_display }}</span></td>
+      <td>{{ case.opened_date|date:"d M Y" }}</td>
+      <td style="display:flex;gap:.4rem;">
+        <a href="{% url 'case-detail' case.pk %}" class="btn btn-primary btn-sm">View</a>
+        <a href="{% url 'case-update' case.pk %}" class="btn btn-warning btn-sm">Edit</a>
+      </td>
+    </tr>
+    {% empty %}<tr><td colspan="7"><div class="empty-state"><strong>No cases found.</strong><p>Try adjusting your filters.</p></div></td></tr>{% endfor %}
+    </tbody>
+  </table></div>
+  {% if is_paginated %}
+  <div class="pagination">
+    {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}&status={{ status_filter }}&risk={{ risk_filter }}&q={{ search_query }}">← Prev</a>{% endif %}
+    <span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}&status={{ status_filter }}&risk={{ risk_filter }}&q={{ search_query }}">Next →</a>{% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

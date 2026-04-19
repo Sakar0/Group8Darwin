@@ -1,0 +1,24 @@
+{% extends "cases/base.html" %}
+{% block title %}Staff – Youth Justice CMS{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><h1>Caseworkers</h1><div class="subtitle">All registered staff members</div></div>
+</div>
+<div class="card">
+  <div class="table-wrap"><table>
+    <thead><tr><th>Name</th><th>Staff ID</th><th>Department</th><th>Phone</th><th>Assigned Clients</th><th>Active Cases</th></tr></thead>
+    <tbody>
+    {% for cw in caseworkers %}
+    <tr>
+      <td><strong>{{ cw }}</strong></td>
+      <td>{{ cw.staff_id }}</td>
+      <td>{{ cw.department|default:"—" }}</td>
+      <td>{{ cw.phone|default:"—" }}</td>
+      <td><span class="badge badge-open">{{ cw.client_count }}</span></td>
+      <td><span class="badge badge-open">{{ cw.case_count }}</span></td>
+    </tr>
+    {% empty %}<tr><td colspan="6"><div class="empty-state"><strong>No caseworkers registered.</strong><p>Add staff via the admin panel at /admin/</p></div></td></tr>{% endfor %}
+    </tbody>
+  </table></div>
+</div>
+{% endblock %}

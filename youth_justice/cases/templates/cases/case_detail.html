@@ -1,0 +1,86 @@
+{% extends "cases/base.html" %}
+{% block title %}Case {{ case.case_number }} – Youth Justice CMS{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><h1>Case {{ case.case_number }}</h1>
+    <div class="subtitle">{{ case.young_person }} &nbsp;·&nbsp; <span class="badge badge-{{ case.status }}">{{ case.get_status_display }}</span></div>
+  </div>
+  <a href="{% url 'case-update' case.pk %}" class="btn btn-warning">Edit Case</a>
+</div>
+<div class="two-col">
+  <div>
+    <div class="card">
+      <div class="card-header"><h2>Case Details</h2></div>
+      <div class="card-body">
+        <div class="detail-list">
+          <span class="dl-label">Case Number</span><span class="dl-value">{{ case.case_number }}</span>
+          <span class="dl-label">Client</span><span class="dl-value"><a href="{% url 'youngperson-detail' case.young_person.pk %}">{{ case.young_person }}</a></span>
+          <span class="dl-label">Caseworker</span><span class="dl-value">{{ case.caseworker|default:"Unassigned" }}</span>
+          <span class="dl-label">Status</span><span class="dl-value"><span class="badge badge-{{ case.status }}">{{ case.get_status_display }}</span></span>
+          <span class="dl-label">Risk Level</span><span class="dl-value"><span class="badge badge-{{ case.risk_level }}">{{ case.get_risk_level_display }}</span></span>
+          <span class="dl-label">Opened</span><span class="dl-value">{{ case.opened_date|date:"d M Y" }}</span>
+          <span class="dl-label">Closed</span><span class="dl-value">{{ case.closed_date|date:"d M Y"|default:"Still open" }}</span>
+        </div>
+        {% if case.notes %}
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #e2e8f0;">
+          <div style="font-weight:600;font-size:.8rem;color:#718096;margin-bottom:.4rem;">NOTES</div>
+          <p style="font-size:.875rem;">{{ case.notes }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card">
+      <div class="card-header"><h2>Offences</h2></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Offence</th><th>Severity</th><th>Date</th><th>Location</th></tr></thead>
+        <tbody>
+        {% for co in case_offences %}
+        <tr>
+          <td>{{ co.offence.name }}</td>
+          <td><span class="badge badge-{{ co.offence.severity }}">{{ co.offence.get_severity_display }}</span></td>
+          <td>{{ co.date_of_offence|date:"d M Y" }}</td>
+          <td>{{ co.location|default:"—" }}</td>
+        </tr>
+        {% empty %}<tr><td colspan="4"><div class="empty-state"><strong>No offences recorded.</strong></div></td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h2>Court Hearings</h2></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Date</th><th>Court</th><th>Judge</th><th>Outcome</th><th>Notes</th></tr></thead>
+        <tbody>
+        {% for h in hearings %}
+        <tr>
+          <td>{{ h.hearing_date|date:"d M Y H:i" }}</td>
+          <td>{{ h.court_name }}</td>
+          <td>{{ h.judge|default:"TBA" }}</td>
+          <td><span class="badge badge-{{ h.outcome }}">{{ h.get_outcome_display }}</span></td>
+          <td>{{ h.outcome_notes|default:"—"|truncatechars:40 }}</td>
+        </tr>
+        {% empty %}<tr><td colspan="5"><div class="empty-state"><strong>No hearings recorded.</strong></div></td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h2>Program Enrolments</h2></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Program</th><th>Type</th><th>Status</th><th>Enrolled</th><th>Completed</th></tr></thead>
+        <tbody>
+        {% for e in enrolments %}
+        <tr>
+          <td>{{ e.program.name }}</td>
+          <td>{{ e.program.get_program_type_display }}</td>
+          <td><span class="badge badge-{{ e.status }}">{{ e.get_status_display }}</span></td>
+          <td>{{ e.enrolment_date|date:"d M Y" }}</td>
+          <td>{{ e.completion_date|date:"d M Y"|default:"—" }}</td>
+        </tr>
+        {% empty %}<tr><td colspan="5"><div class="empty-state"><strong>No program enrolments.</strong></div></td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

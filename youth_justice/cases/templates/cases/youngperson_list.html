@@ -1,0 +1,48 @@
+{% extends "cases/base.html" %}
+{% block title %}Clients – Youth Justice CMS{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><h1>Clients</h1><div class="subtitle">All registered young persons</div></div>
+  <a href="{% url 'youngperson-create' %}" class="btn btn-success">+ Register Client</a>
+</div>
+<div class="card">
+  <div class="filter-bar">
+    <form method="get" style="display:flex;gap:.75rem;align-items:center;width:100%;">
+      <input type="text" name="q" placeholder="Search by name..." value="{{ search_query }}">
+      <button type="submit" class="btn btn-primary btn-sm">Search</button>
+      {% if search_query %}<a href="{% url 'youngperson-list' %}" class="btn btn-light btn-sm">Clear</a>{% endif %}
+    </form>
+  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Name</th><th>Date of Birth</th><th>Age</th><th>Gender</th><th>Caseworker</th><th>Total Cases</th><th>Actions</th></tr></thead>
+    <tbody>
+    {% for client in clients %}
+    <tr>
+      <td><strong>{{ client }}</strong></td>
+      <td>{{ client.date_of_birth|date:"d M Y" }}</td>
+      <td>{{ client.age }}</td>
+      <td>{{ client.get_gender_display }}</td>
+      <td>{{ client.assigned_caseworker|default:"—" }}</td>
+      <td><span class="badge badge-open">{{ client.case_count }}</span></td>
+      <td style="display:flex;gap:.4rem;">
+        <a href="{% url 'youngperson-detail' client.pk %}" class="btn btn-primary btn-sm">View</a>
+        <a href="{% url 'youngperson-update' client.pk %}" class="btn btn-warning btn-sm">Edit</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7"><div class="empty-state"><strong>No clients found.</strong>
+    {% if search_query %}<p>No results for "{{ search_query }}". <a href="{% url 'youngperson-list' %}">Clear search</a></p>
+    {% else %}<p>Register the first client to get started.</p>{% endif %}
+    </div></td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  {% if is_paginated %}
+  <div class="pagination">
+    {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}&q={{ search_query }}">← Prev</a>{% endif %}
+    <span class="current">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}&q={{ search_query }}">Next →</a>{% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

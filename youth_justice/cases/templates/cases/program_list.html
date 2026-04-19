@@ -1,0 +1,26 @@
+{% extends "cases/base.html" %}
+{% block title %}Programs – Youth Justice CMS{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><h1>Rehabilitation Programs</h1><div class="subtitle">Active programs available for enrolment</div></div>
+</div>
+<div class="card">
+  <div class="table-wrap"><table>
+    <thead><tr><th>Program</th><th>Type</th><th>Duration</th><th>Capacity</th><th>Enrolled</th><th>Available</th><th>Facilitator</th><th></th></tr></thead>
+    <tbody>
+    {% for program in programs %}
+    <tr>
+      <td><strong>{{ program.name }}</strong></td>
+      <td>{{ program.get_program_type_display }}</td>
+      <td>{{ program.duration_weeks }} weeks</td>
+      <td>{{ program.capacity }}</td>
+      <td>{{ program.enrolled_count }}</td>
+      <td>{% if program.is_full %}<span class="badge badge-closed">Full</span>{% else %}<span class="badge badge-open">{{ program.available_spots }}</span>{% endif %}</td>
+      <td>{{ program.facilitator }}</td>
+      <td><a href="{% url 'program-detail' program.pk %}" class="btn btn-primary btn-sm">View</a></td>
+    </tr>
+    {% empty %}<tr><td colspan="8"><div class="empty-state"><strong>No active programs.</strong><p>Add programs via the admin panel.</p></div></td></tr>{% endfor %}
+    </tbody>
+  </table></div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "cases/base.html" %}
+{% block title %}{{ client }} – Youth Justice CMS{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><h1>{{ client }}</h1><div class="subtitle">Client Profile</div></div>
+  <a href="{% url 'youngperson-update' client.pk %}" class="btn btn-warning">Edit Profile</a>
+</div>
+<div class="two-col">
+  <div>
+    <div class="card">
+      <div class="card-header"><h2>Personal Details</h2></div>
+      <div class="card-body">
+        <div class="detail-list">
+          <span class="dl-label">Full Name</span><span class="dl-value">{{ client.full_name }}</span>
+          <span class="dl-label">Date of Birth</span><span class="dl-value">{{ client.date_of_birth|date:"d M Y" }}</span>
+          <span class="dl-label">Age</span><span class="dl-value">{{ client.age }} years</span>
+          <span class="dl-label">Gender</span><span class="dl-value">{{ client.get_gender_display }}</span>
+          <span class="dl-label">Indigenous Status</span><span class="dl-value">{% if client.indigenous_status %}Yes{% else %}No{% endif %}</span>
+          <span class="dl-label">Phone</span><span class="dl-value">{{ client.phone|default:"Not provided" }}</span>
+          <span class="dl-label">Address</span><span class="dl-value">{{ client.address|default:"Not provided" }}</span>
+          <span class="dl-label">Registered</span><span class="dl-value">{{ client.created_at|date:"d M Y" }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h2>Guardian / Parent</h2></div>
+      <div class="card-body">
+        <div class="detail-list">
+          <span class="dl-label">Name</span><span class="dl-value">{{ client.guardian_name|default:"Not provided" }}</span>
+          <span class="dl-label">Phone</span><span class="dl-value">{{ client.guardian_phone|default:"Not provided" }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h2>Assigned Caseworker</h2></div>
+      <div class="card-body">
+        {% if client.assigned_caseworker %}
+        <div class="detail-list">
+          <span class="dl-label">Name</span><span class="dl-value">{{ client.assigned_caseworker }}</span>
+          <span class="dl-label">Staff ID</span><span class="dl-value">{{ client.assigned_caseworker.staff_id }}</span>
+          <span class="dl-label">Department</span><span class="dl-value">{{ client.assigned_caseworker.department|default:"—" }}</span>
+          <span class="dl-label">Phone</span><span class="dl-value">{{ client.assigned_caseworker.phone|default:"—" }}</span>
+        </div>
+        {% else %}<p style="color:#a0aec0;font-size:.875rem;">No caseworker assigned.</p>{% endif %}
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="card">
+      <div class="card-header"><h2>Case History</h2><a href="{% url 'case-create' %}" class="btn btn-success btn-sm">+ New Case</a></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Case #</th><th>Caseworker</th><th>Status</th><th>Risk</th><th>Opened</th><th></th></tr></thead>
+        <tbody>
+        {% for case in cases %}
+        <tr>
+          <td><strong>{{ case.case_number }}</strong></td>
+          <td>{{ case.caseworker|default:"—" }}</td>
+          <td><span class="badge badge-{{ case.status }}">{{ case.get_status_display }}</span></td>
+          <td><span class="badge badge-{{ case.risk_level }}">{{ case.get_risk_level_display }}</span></td>
+          <td>{{ case.opened_date|date:"d M Y" }}</td>
+          <td><a href="{% url 'case-detail' case.pk %}" class="btn btn-primary btn-sm">View</a></td>
+        </tr>
+        {% empty %}<tr><td colspan="6"><div class="empty-state"><strong>No cases recorded.</strong></div></td></tr>{% endfor %}
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

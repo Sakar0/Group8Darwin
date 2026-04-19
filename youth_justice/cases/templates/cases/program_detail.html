@@ -1,0 +1,40 @@
+{% extends "cases/base.html" %}
+{% block title %}{{ program }} – Youth Justice CMS{% endblock %}
+{% block content %}
+<div class="page-header">
+  <div><h1>{{ program.name }}</h1><div class="subtitle">{{ program.get_program_type_display }}</div></div>
+</div>
+<div class="two-col">
+  <div class="card">
+    <div class="card-header"><h2>Program Details</h2></div>
+    <div class="card-body">
+      <div class="detail-list">
+        <span class="dl-label">Type</span><span class="dl-value">{{ program.get_program_type_display }}</span>
+        <span class="dl-label">Duration</span><span class="dl-value">{{ program.duration_weeks }} weeks</span>
+        <span class="dl-label">Capacity</span><span class="dl-value">{{ program.capacity }}</span>
+        <span class="dl-label">Available Spots</span><span class="dl-value">{{ program.available_spots }}</span>
+        <span class="dl-label">Completed</span><span class="dl-value">{{ completed_count }}</span>
+        <span class="dl-label">Facilitator</span><span class="dl-value">{{ program.facilitator }}</span>
+        <span class="dl-label">Active</span><span class="dl-value">{% if program.is_active %}Yes{% else %}No{% endif %}</span>
+      </div>
+      <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #e2e8f0;font-size:.875rem;color:#4a5568;">{{ program.description }}</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><h2>Currently Enrolled Clients</h2></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Client</th><th>Case #</th><th>Enrolled Date</th><th>Status</th></tr></thead>
+      <tbody>
+      {% for e in enrolments %}
+      <tr>
+        <td>{{ e.case.young_person }}</td>
+        <td><a href="{% url 'case-detail' e.case.pk %}">{{ e.case.case_number }}</a></td>
+        <td>{{ e.enrolment_date|date:"d M Y" }}</td>
+        <td><span class="badge badge-{{ e.status }}">{{ e.get_status_display }}</span></td>
+      </tr>
+      {% empty %}<tr><td colspan="4"><div class="empty-state"><strong>No current enrolments.</strong></div></td></tr>{% endfor %}
+      </tbody>
+    </table></div>
+  </div>
+</div>
+{% endblock %}
