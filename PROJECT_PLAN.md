@@ -57,7 +57,7 @@ The YJCMS is a web-based internal tool for youth justice workers to manage:
 
 ### 3.1 Communication Standards
 - Primary channel: Group messaging (Discord / WhatsApp)
-- Weekly check-in: Every [day] at [time] via video call or in person
+- Weekly check-in: Every Friday at 3:00 PM via video call or in person
 - Response time: Within 24 hours on weekdays, 48 hours on weekends
 - Escalation: If a member is unresponsive for 48 hours, the group lead contacts them directly; if unresolved, the unit coordinator is informed
 
