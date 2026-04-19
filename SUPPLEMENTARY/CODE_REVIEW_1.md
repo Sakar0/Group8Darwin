@@ -2,7 +2,7 @@
 
 **Reviewer:** Sakar0  
 **Author:** [Member 1 Name]  
-**Date:** 19 April 2026  
+**Date:** 2026-04-19  
 **File Reviewed:** `cases/models.py`  
 **Pull Request:** `feature/domain-models` → `main`
 
@@ -120,4 +120,4 @@ risk_level = models.CharField(max_length=10, choices=RISK_CHOICES, default='low'
 
 ---
 
-*Signed: [Member 3 Name], [Date]*
+*Signed: [Member 3 Name], 2026-04-19*
