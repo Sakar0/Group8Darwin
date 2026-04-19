@@ -1,0 +1,107 @@
+<!-- Base template — authored by Aryan, Group 8 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Youth Justice CMS{% endblock %}</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:#2d3748;font-size:14px}
+nav{background:#1a365d;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.nav-brand{font-size:1.1rem;font-weight:700;color:#fbd38d;text-decoration:none}
+.nav-links{display:flex}
+.nav-links a{color:#bee3f8;text-decoration:none;padding:0 1rem;height:56px;display:flex;align-items:center;font-size:.875rem;border-bottom:3px solid transparent;transition:all .15s}
+.nav-links a:hover{background:rgba(255,255,255,.08);color:#fff;border-bottom-color:#fbd38d}
+.nav-user{color:#a0aec0;font-size:.8rem}
+.nav-user a{color:#fc8181;text-decoration:none;margin-left:.5rem}
+.container{max-width:1200px;margin:1.5rem auto;padding:0 1.5rem}
+.page-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
+.page-header h1{font-size:1.5rem;color:#1a365d;font-weight:700}
+.page-header .subtitle{font-size:.85rem;color:#718096;margin-top:2px}
+.card{background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04);margin-bottom:1.5rem;overflow:hidden}
+.card-header{padding:1rem 1.25rem;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;align-items:center}
+.card-header h2{font-size:1rem;font-weight:600;color:#2d3748}
+.card-body{padding:1.25rem}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem}
+.stat-card{background:#fff;border-radius:10px;padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.08);border-left:4px solid}
+.stat-card.blue{border-left-color:#3182ce}.stat-card.green{border-left-color:#38a169}
+.stat-card.orange{border-left-color:#dd6b20}.stat-card.purple{border-left-color:#805ad5}
+.stat-card.red{border-left-color:#e53e3e}
+.stat-number{font-size:2rem;font-weight:700;color:#1a365d;line-height:1}
+.stat-label{font-size:.78rem;color:#718096;margin-top:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.875rem}
+thead tr{background:#f7fafc;border-bottom:2px solid #e2e8f0}
+th{padding:.75rem 1rem;text-align:left;font-weight:600;color:#4a5568;font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+td{padding:.75rem 1rem;border-bottom:1px solid #f0f4f8;color:#2d3748}
+tbody tr:hover{background:#f7fafc}
+tbody tr:last-child td{border-bottom:none}
+.badge{display:inline-flex;align-items:center;padding:.2rem .65rem;border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.3px;white-space:nowrap}
+.badge-open{background:#c6f6d5;color:#22543d}.badge-pending{background:#fefcbf;color:#744210}
+.badge-closed{background:#fed7d7;color:#742a2a}.badge-referred{background:#e9d8fd;color:#44337a}
+.badge-diverted{background:#bee3f8;color:#2a4365}.badge-low{background:#c6f6d5;color:#22543d}
+.badge-medium{background:#fefcbf;color:#744210}.badge-high{background:#fed7d7;color:#742a2a}
+.badge-minor{background:#e9d8fd;color:#44337a}.badge-moderate{background:#fefcbf;color:#744210}
+.badge-serious{background:#fed7d7;color:#742a2a}.badge-violent{background:#fc8181;color:#742a2a}
+.badge-enrolled{background:#c6f6d5;color:#22543d}.badge-completed{background:#bee3f8;color:#2a4365}
+.badge-withdrawn{background:#fed7d7;color:#742a2a}.badge-pending{background:#fefcbf;color:#744210}
+.badge-adjourned{background:#fefcbf;color:#744210}.badge-dismissed{background:#e9d8fd;color:#44337a}
+.badge-sentenced{background:#fed7d7;color:#742a2a}.badge-acquitted{background:#c6f6d5;color:#22543d}
+.btn{display:inline-flex;align-items:center;gap:4px;padding:.45rem 1rem;border-radius:6px;font-size:.8rem;font-weight:600;cursor:pointer;border:none;text-decoration:none;transition:all .15s;line-height:1}
+.btn-primary{background:#2b6cb0;color:#fff}.btn-primary:hover{background:#2c5282}
+.btn-success{background:#276749;color:#fff}.btn-success:hover{background:#22543d}
+.btn-warning{background:#c05621;color:#fff}.btn-warning:hover{background:#9c4221}
+.btn-danger{background:#c53030;color:#fff}.btn-danger:hover{background:#9b2c2c}
+.btn-light{background:#edf2f7;color:#2d3748;border:1px solid #e2e8f0}.btn-light:hover{background:#e2e8f0}
+.btn-sm{padding:.3rem .7rem;font-size:.75rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-weight:600;font-size:.85rem;color:#4a5568;margin-bottom:.35rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.55rem .75rem;border:1px solid #cbd5e0;border-radius:6px;font-size:.875rem;color:#2d3748;transition:border-color .15s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#3182ce;box-shadow:0 0 0 3px rgba(49,130,206,.1)}
+.filter-bar{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;padding:.75rem 1.25rem;background:#f7fafc;border-bottom:1px solid #e2e8f0}
+.filter-bar input,.filter-bar select{padding:.4rem .65rem;border:1px solid #cbd5e0;border-radius:6px;font-size:.825rem;color:#2d3748}
+.filter-bar input{min-width:220px}
+.detail-list{display:grid;grid-template-columns:max-content 1fr;gap:.5rem 1.5rem;font-size:.875rem}
+.detail-list .dl-label{font-weight:600;color:#718096;white-space:nowrap}
+.detail-list .dl-value{color:#2d3748}
+.messages-list{margin-bottom:1rem}
+.alert{padding:.75rem 1rem;border-radius:8px;margin-bottom:.5rem;font-size:.875rem}
+.alert-success{background:#c6f6d5;color:#22543d;border:1px solid #9ae6b4}
+.alert-error,.alert-warning{background:#fefcbf;color:#744210;border:1px solid #f6e05e}
+.empty-state{text-align:center;padding:2.5rem;color:#a0aec0}
+.empty-state strong{display:block;font-size:1rem;margin-bottom:.4rem}
+.empty-state p{font-size:.85rem}
+.pagination{display:flex;gap:.5rem;justify-content:center;padding:1rem}
+.pagination a,.pagination span{padding:.35rem .75rem;border-radius:5px;font-size:.8rem;text-decoration:none;border:1px solid #e2e8f0;color:#4a5568}
+.pagination .current{background:#2b6cb0;color:#fff;border-color:#2b6cb0}
+.pagination a:hover{background:#edf2f7}
+.two-col{display:grid;grid-template-columns:1fr 2fr;gap:1.5rem}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:768px){.two-col,.three-col{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}nav{padding:0 1rem}.nav-links a{padding:0 .5rem;font-size:.8rem}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="{% url 'dashboard' %}" class="nav-brand">⚖ Youth Justice CMS</a>
+  <div class="nav-links">
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'youngperson-list' %}">Clients</a>
+    <a href="{% url 'case-list' %}">Cases</a>
+    <a href="{% url 'program-list' %}">Programs</a>
+    <a href="{% url 'caseworker-list' %}">Staff</a>
+  </div>
+  <div class="nav-user">
+    {% if user.is_authenticated %}{{ user.get_full_name|default:user.username }} <a href="{% url 'logout' %}">Logout</a>{% endif %}
+  </div>
+</nav>
+<div class="container">
+  {% if messages %}
+  <div class="messages-list">
+    {% for message in messages %}<div class="alert alert-{{ message.tags }}">{{ message }}</div>{% endfor %}
+  </div>
+  {% endif %}
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>
