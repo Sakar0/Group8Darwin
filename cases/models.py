@@ -3,11 +3,14 @@ cases/models.py
 
 Core domain models for the Youth Justice Case Management System.
 
+Domain: youth justice case management — models represent core entities (clients,
+cases, offences, programs) and the explicit relationships between them.
+
 Django philosophies applied:
-  - Explicit is better than implicit: through models used for ALL M2M relationships
-    so extra attributes are stored without ambiguity (ADR-001)
-  - DRY: shared logic lives on the model — fat-model pattern (ADR-005)
-  - Loose coupling: models do not import from views or templates (ADR-005)
+    - Explicit is better than implicit: through models used for ALL M2M relationships
+        so extra attributes are stored without ambiguity (ADR-001)
+    - DRY: shared logic lives on the model — fat-model pattern (ADR-005)
+    - Loose coupling: models do not import from views or templates (ADR-005)
 """
 
 from django.db import models
@@ -177,8 +180,10 @@ class Case(models.Model):
         blank=True
     )
 
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='open')
-    risk_level = models.CharField(max_length=10, choices=RISK_CHOICES, default='low')
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default='open')
+    risk_level = models.CharField(
+        max_length=10, choices=RISK_CHOICES, default='low')
     opened_date = models.DateField(auto_now_add=True)
     closed_date = models.DateField(null=True, blank=True)
     notes = models.TextField(blank=True)
@@ -207,8 +212,10 @@ class CaseOffence(models.Model):
     entity alone.
     Code reference: cases/models.py — this class
     """
-    case = models.ForeignKey(Case, on_delete=models.CASCADE, related_name='case_offences')
-    offence = models.ForeignKey(Offence, on_delete=models.CASCADE, related_name='case_offences')
+    case = models.ForeignKey(
+        Case, on_delete=models.CASCADE, related_name='case_offences')
+    offence = models.ForeignKey(
+        Offence, on_delete=models.CASCADE, related_name='case_offences')
     date_of_offence = models.DateField()
     location = models.CharField(max_length=200, blank=True)
     details = models.TextField(blank=True)
@@ -237,11 +244,13 @@ class CourtHearing(models.Model):
         ('acquitted', 'Acquitted'),
     ]
 
-    case = models.ForeignKey(Case, on_delete=models.CASCADE, related_name='hearings')
+    case = models.ForeignKey(
+        Case, on_delete=models.CASCADE, related_name='hearings')
     hearing_date = models.DateTimeField()
     court_name = models.CharField(max_length=200)
     judge = models.CharField(max_length=200, blank=True)
-    outcome = models.CharField(max_length=20, choices=OUTCOME_CHOICES, default='pending')
+    outcome = models.CharField(
+        max_length=20, choices=OUTCOME_CHOICES, default='pending')
     outcome_notes = models.TextField(blank=True)
     next_hearing_date = models.DateTimeField(null=True, blank=True)
 
@@ -267,7 +276,8 @@ class Program(models.Model):
     ]
 
     name = models.CharField(max_length=200)
-    program_type = models.CharField(max_length=30, choices=PROGRAM_TYPE_CHOICES, default='rehabilitation')
+    program_type = models.CharField(
+        max_length=30, choices=PROGRAM_TYPE_CHOICES, default='rehabilitation')
     description = models.TextField()
     duration_weeks = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField(default=20)
@@ -306,10 +316,13 @@ class Enrolment(models.Model):
         ('referred', 'Referred'),
     ]
 
-    case = models.ForeignKey(Case, on_delete=models.CASCADE, related_name='enrolments')
-    program = models.ForeignKey(Program, on_delete=models.CASCADE, related_name='enrolments')
+    case = models.ForeignKey(
+        Case, on_delete=models.CASCADE, related_name='enrolments')
+    program = models.ForeignKey(
+        Program, on_delete=models.CASCADE, related_name='enrolments')
     enrolment_date = models.DateField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='enrolled')
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default='enrolled')
     completion_date = models.DateField(null=True, blank=True)
     notes = models.TextField(blank=True)
 
